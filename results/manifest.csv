@@ -1,0 +1,7 @@
+backend,seed,run_name,exit_code,total_wall_s,gpu_peak_mib,log_dir
+physx,0,physx_s0,0,116.722596546,3769,$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench/2026-06-13_11-00-03_physx_s0
+physx,1,physx_s1,0,116.594768178,3794,$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench/2026-06-13_11-02-00_physx_s1
+physx,2,physx_s2,0,112.980917076,3725,$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench/2026-06-13_11-03-56_physx_s2
+newton,0,newton_s0,0,79.309559378,1099,$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench/2026-06-13_11-05-46_newton_s0
+newton,1,newton_s1,0,80.259490609,1092,$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench/2026-06-13_11-07-05_newton_s1
+newton,2,newton_s2,0,81.591144194,1223,$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench/2026-06-13_11-08-26_newton_s2

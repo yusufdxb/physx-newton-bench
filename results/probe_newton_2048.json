@@ -1,0 +1,15 @@
+{
+  "tag": "newton_2048",
+  "task": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+  "backend_cfg": "NewtonCfg",
+  "num_envs": 2048,
+  "n_steps": 100,
+  "warmup": 10,
+  "wall_s": 0.4098741789999849,
+  "env_steps": 204800,
+  "env_steps_per_sec": 499665.5327243914,
+  "device": "cuda:0",
+  "dt": 0.005,
+  "decimation": 4,
+  "status": "ok"
+}

@@ -1,0 +1,15 @@
+{
+  "tag": "newton_smoke",
+  "task": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+  "backend_cfg": "NewtonCfg",
+  "num_envs": 64,
+  "n_steps": 50,
+  "warmup": 5,
+  "wall_s": 0.13653758300000618,
+  "env_steps": 3200,
+  "env_steps_per_sec": 23436.770519072797,
+  "device": "cuda:0",
+  "dt": 0.005,
+  "decimation": 4,
+  "status": "ok"
+}

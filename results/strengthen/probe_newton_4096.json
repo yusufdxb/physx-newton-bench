@@ -1,0 +1,29 @@
+{
+  "tag": "probe_newton_4096",
+  "task": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+  "backend_cfg": "NewtonCfg",
+  "num_envs": 4096,
+  "n_steps": 100,
+  "repeats": 10,
+  "warmup": 10,
+  "env_steps_per_sec_all": [
+    765321.6611815068,
+    749423.26381758,
+    748784.100575848,
+    751704.4195743842,
+    747416.4035646395,
+    751085.8150201206,
+    751300.3117305107,
+    751150.415928727,
+    755062.6429444912,
+    556707.5115193662
+  ],
+  "env_steps_per_sec_mean": 732795.6545857175,
+  "env_steps_per_sec_std": 62073.48607449472,
+  "proc_vram_mib": 566,
+  "torch_max_mem_alloc_mib": 6.6611328125,
+  "device": "cuda:0",
+  "dt": 0.005,
+  "decimation": 4,
+  "status": "ok"
+}

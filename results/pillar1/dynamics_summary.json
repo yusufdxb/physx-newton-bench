@@ -1,0 +1,30 @@
+{
+  "horizon_steps": 300,
+  "horizon_s": 5.98,
+  "base_pos_err_settle_m": 0.0353970006108284,
+  "base_pos_err_final_m": 0.4065115451812744,
+  "base_pos_err_max_m": 0.4065115451812744,
+  "base_ori_err_final_deg": 25.21988296508789,
+  "base_ori_err_max_deg": 30.264583587646484,
+  "div_time_5cm_s": 1.72,
+  "div_time_5deg_s": 1.86,
+  "joint_pos_rmse_mean_rad": 0.17641757428646088,
+  "joint_pos_rmse_max_rad": 0.26896369457244873,
+  "joint_pos_rmse_max_joint": "RL_calf_joint",
+  "settle_joint_maxabs_rad": 0.1181861162185669,
+  "foot_force_corr": {
+    "FL_foot": NaN,
+    "FR_foot": NaN,
+    "RL_foot": 0.051245537729276515,
+    "RR_foot": 0.5360049681231784
+  },
+  "foot_force_corr_total": 0.39443510798826564,
+  "mass_canonical_match": true,
+  "mass_maxdiff_kg": 4.76837158203125e-07,
+  "total_mass_physx": 15.01900016865693,
+  "total_mass_newton": 15.018999691819772,
+  "joint_stiffness_physx": 0.0,
+  "joint_stiffness_newton": 25.0,
+  "joint_damping_physx": 0.0,
+  "joint_damping_newton": 0.5
+}

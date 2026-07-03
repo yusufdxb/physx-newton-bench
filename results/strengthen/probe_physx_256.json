@@ -1,0 +1,29 @@
+{
+  "tag": "probe_physx_256",
+  "task": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+  "backend_cfg": "PhysxCfg",
+  "num_envs": 256,
+  "n_steps": 100,
+  "repeats": 10,
+  "warmup": 10,
+  "env_steps_per_sec_all": [
+    36401.952676389876,
+    37049.88989684569,
+    37382.2610277999,
+    37653.66067307899,
+    37704.06120944411,
+    38444.50147112262,
+    38399.20684518321,
+    38433.44514908703,
+    38243.30324691398,
+    29054.80872218955
+  ],
+  "env_steps_per_sec_mean": 36876.7090918055,
+  "env_steps_per_sec_std": 2829.3744454699413,
+  "proc_vram_mib": 2451,
+  "torch_max_mem_alloc_mib": 0.5849609375,
+  "device": "cuda:0",
+  "dt": 0.005,
+  "decimation": 4,
+  "status": "ok"
+}

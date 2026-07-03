@@ -1,0 +1,6 @@
+# raw run logs: bulky, contain local paths/timestamps; every published number
+# traces to the artifacts under results/ instead
+logs/
+
+__pycache__/
+*.pyc

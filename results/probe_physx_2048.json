@@ -1,0 +1,15 @@
+{
+  "tag": "physx_2048",
+  "task": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+  "backend_cfg": "PhysxCfg",
+  "num_envs": 2048,
+  "n_steps": 100,
+  "warmup": 10,
+  "wall_s": 0.9149391380000225,
+  "env_steps": 204800,
+  "env_steps_per_sec": 223840.02552090515,
+  "device": "cuda:0",
+  "dt": 0.005,
+  "decimation": 4,
+  "status": "ok"
+}

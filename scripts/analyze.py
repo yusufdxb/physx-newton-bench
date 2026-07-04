@@ -4,7 +4,8 @@ import csv, collections, json, statistics, os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
+import physx_style as _physx_style  # editorial-print theme
+_physx_style.apply()
 BENCH = os.environ.get("BENCH_DIR", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 R = 18.0  # ~80% of pooled plateau (~22.5); fixed threshold, both backends
 
@@ -68,7 +69,7 @@ with open(f"{BENCH}/results/aggregate.json", "w") as f:
 # ---- plot: mean reward vs wall-clock, shaded min/max across seeds ----
 N = 300
 fig, ax = plt.subplots(figsize=(8, 5))
-colors = {"physx": "#1f77b4", "newton": "#d62728"}
+colors = _physx_style.COLORS
 for b in ("physx", "newton"):
     seeds = [k for k in rows if k[0] == b]
     rew = [[rows[k][i][1] for k in seeds] for i in range(N)]

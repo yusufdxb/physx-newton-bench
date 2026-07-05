@@ -147,7 +147,7 @@ def main():
     ax1.set_xlim(right=ENV_COUNTS[-1] * 2.2)
     ax2.set_xlim(right=ENV_COUNTS[-1] * 2.2)
     fig.tight_layout()
-    fig.savefig(os.path.join(SDIR, "fig_scaling.png"), facecolor="#fcfcfb")
+    fig.savefig(os.path.join(SDIR, "fig_scaling.png"), facecolor="#ffffff")
     plt.close(fig)
 
     # ---------- figure 2: learning curves, IQM + bootstrap band ----------
@@ -181,7 +181,7 @@ def main():
                  color="#0b0b0b", fontsize=11)
     ax.set_xlim(right=tmax * 1.12)
     fig.tight_layout()
-    fig.savefig(os.path.join(SDIR, "fig_learning.png"), facecolor="#fcfcfb")
+    fig.savefig(os.path.join(SDIR, "fig_learning.png"), facecolor="#ffffff")
     plt.close(fig)
 
     # ---------- figure 3: learning curves vs iteration ----------
@@ -212,7 +212,7 @@ def main():
                  color="#0b0b0b", fontsize=11)
     ax.set_xlim(right=len(it) * 1.12)
     fig.tight_layout()
-    fig.savefig(os.path.join(SDIR, "fig_learning_iter.png"), facecolor="#fcfcfb")
+    fig.savefig(os.path.join(SDIR, "fig_learning_iter.png"), facecolor="#ffffff")
     plt.close(fig)
 
     # ---------- markdown ----------

@@ -84,7 +84,8 @@ def main():
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-
+    import physx_style as _physx_style  # editorial-print theme
+    _physx_style.apply()
     probes = load_probes()
     manifest = load_manifest()
     curves = load_curves(manifest)

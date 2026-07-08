@@ -5,8 +5,6 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import physx_style as _physx_style  # editorial-print theme
-_physx_style.apply()
 D = os.path.join(
     os.environ.get("BENCH_DIR", os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "results", "pillar1")

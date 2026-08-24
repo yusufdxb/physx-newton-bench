@@ -1,5 +1,9 @@
 # Strengthening-suite summary
 
+## Scientific validity preflight
+
+**INVALID PENDING RERUN for backend-only learning claims.** The committed resolved configs contain uncontrolled non-backend differences. Run `python3 scripts/compare_semantic_configs.py --fail-on-unsafe` for the machine-readable manifest and rerun after the preflight passes.
+
 ## Pure-step throughput + per-process VRAM
 
 | num_envs | PhysX steps/s | Newton steps/s | ratio | PhysX VRAM MiB | Newton VRAM MiB |

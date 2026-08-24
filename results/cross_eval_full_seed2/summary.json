@@ -1,0 +1,266 @@
+{
+  "interpretation": "At least one fixed-checkpoint preference reverses across backends.",
+  "max_rank_shift": 5,
+  "num_policies": 10,
+  "per_policy": [
+    {
+      "newton_mean_return": -3.6477207597345114,
+      "newton_minus_physx_return": {
+        "ci_high": -33.00627079047263,
+        "ci_low": -36.75662597171031,
+        "difference": -34.89490402303636
+      },
+      "newton_rank": 4,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 31.24718326330185,
+      "physx_rank": 4,
+      "physx_success_rate": 1.0,
+      "policy_id": "physx_s0"
+    },
+    {
+      "newton_mean_return": -4.33227096311748,
+      "newton_minus_physx_return": {
+        "ci_high": -26.19761183806695,
+        "ci_low": -30.750448596524073,
+        "difference": -28.464805204421282
+      },
+      "newton_rank": 8,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 24.1325342413038,
+      "physx_rank": 10,
+      "physx_success_rate": 0.90625,
+      "policy_id": "physx_s1"
+    },
+    {
+      "newton_mean_return": -4.683816220611334,
+      "newton_minus_physx_return": {
+        "ci_high": -30.59783535823226,
+        "ci_low": -36.656464401166886,
+        "difference": -33.765573143959045
+      },
+      "newton_rank": 9,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 29.08175692334771,
+      "physx_rank": 7,
+      "physx_success_rate": 0.890625,
+      "policy_id": "physx_s2"
+    },
+    {
+      "newton_mean_return": -3.8437718506902456,
+      "newton_minus_physx_return": {
+        "ci_high": -26.348566721985122,
+        "ci_low": -32.50694523467682,
+        "difference": -29.57498357631266
+      },
+      "newton_rank": 7,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 25.731211725622416,
+      "physx_rank": 9,
+      "physx_success_rate": 0.828125,
+      "policy_id": "physx_s3"
+    },
+    {
+      "newton_mean_return": -3.6937058474868536,
+      "newton_minus_physx_return": {
+        "ci_high": -33.20417727413587,
+        "ci_low": -36.799171230429785,
+        "difference": -35.09890349023044
+      },
+      "newton_rank": 5,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 31.405197642743587,
+      "physx_rank": 3,
+      "physx_success_rate": 0.984375,
+      "policy_id": "physx_s4"
+    },
+    {
+      "newton_mean_return": -3.4509006068110466,
+      "newton_minus_physx_return": {
+        "ci_high": -34.17513571549207,
+        "ci_low": -37.203915952611716,
+        "difference": -35.733997128903866
+      },
+      "newton_rank": 2,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 32.28309652209282,
+      "physx_rank": 2,
+      "physx_success_rate": 0.984375,
+      "policy_id": "physx_s5"
+    },
+    {
+      "newton_mean_return": -3.363114992156625,
+      "newton_minus_physx_return": {
+        "ci_high": -30.228442203655142,
+        "ci_low": -35.34289150511031,
+        "difference": -32.90480221877806
+      },
+      "newton_rank": 1,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 29.541687226621434,
+      "physx_rank": 6,
+      "physx_success_rate": 0.890625,
+      "policy_id": "physx_s6"
+    },
+    {
+      "newton_mean_return": -3.6312721334397793,
+      "newton_minus_physx_return": {
+        "ci_high": -36.74184457119554,
+        "ci_low": -39.484557665977626,
+        "difference": -38.16365813836455
+      },
+      "newton_rank": 3,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 34.532386004924774,
+      "physx_rank": 1,
+      "physx_success_rate": 0.984375,
+      "policy_id": "physx_s7"
+    },
+    {
+      "newton_mean_return": -5.0297453589737415,
+      "newton_minus_physx_return": {
+        "ci_high": -33.59581613140181,
+        "ci_low": -37.470964754279706,
+        "difference": -35.642202354967594
+      },
+      "newton_rank": 10,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 30.612456995993853,
+      "physx_rank": 5,
+      "physx_success_rate": 1.0,
+      "policy_id": "physx_s8"
+    },
+    {
+      "newton_mean_return": -3.834546484053135,
+      "newton_minus_physx_return": {
+        "ci_high": -29.872914203678377,
+        "ci_low": -34.750753592752154,
+        "difference": -32.369977605412714
+      },
+      "newton_rank": 6,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 28.53543112135958,
+      "physx_rank": 8,
+      "physx_success_rate": 1.0,
+      "policy_id": "physx_s9"
+    }
+  ],
+  "preference_reversal_count": 14,
+  "preference_reversal_fraction": 0.3111111111111111,
+  "probe_survives": true,
+  "ranks": {
+    "newton": {
+      "physx_s0": 4,
+      "physx_s1": 8,
+      "physx_s2": 9,
+      "physx_s3": 7,
+      "physx_s4": 5,
+      "physx_s5": 2,
+      "physx_s6": 1,
+      "physx_s7": 3,
+      "physx_s8": 10,
+      "physx_s9": 6
+    },
+    "physx": {
+      "physx_s0": 4,
+      "physx_s1": 10,
+      "physx_s2": 7,
+      "physx_s3": 9,
+      "physx_s4": 3,
+      "physx_s5": 2,
+      "physx_s6": 6,
+      "physx_s7": 1,
+      "physx_s8": 5,
+      "physx_s9": 8
+    }
+  },
+  "reversals": [
+    {
+      "first": "physx_s0",
+      "newton_delta": 0.045985087752342224,
+      "physx_delta": -0.15801437944173813,
+      "second": "physx_s4"
+    },
+    {
+      "first": "physx_s0",
+      "newton_delta": -0.2846057675778866,
+      "physx_delta": 1.7054960366804153,
+      "second": "physx_s6"
+    },
+    {
+      "first": "physx_s1",
+      "newton_delta": 0.35154525749385357,
+      "physx_delta": -4.94922268204391,
+      "second": "physx_s2"
+    },
+    {
+      "first": "physx_s1",
+      "newton_delta": 0.6974743958562613,
+      "physx_delta": -6.479922754690051,
+      "second": "physx_s8"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -0.8400443699210882,
+      "physx_delta": 3.350545197725296,
+      "second": "physx_s3"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": 0.3459291383624077,
+      "physx_delta": -1.530700072646141,
+      "second": "physx_s8"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -0.8492697365581989,
+      "physx_delta": 0.5463258019881323,
+      "second": "physx_s9"
+    },
+    {
+      "first": "physx_s3",
+      "newton_delta": 1.185973508283496,
+      "physx_delta": -4.881245270371437,
+      "second": "physx_s8"
+    },
+    {
+      "first": "physx_s4",
+      "newton_delta": -0.3305908553302288,
+      "physx_delta": 1.8635104161221534,
+      "second": "physx_s6"
+    },
+    {
+      "first": "physx_s5",
+      "newton_delta": -0.0877856146544218,
+      "physx_delta": 2.741409295471385,
+      "second": "physx_s6"
+    },
+    {
+      "first": "physx_s5",
+      "newton_delta": 0.18037152662873268,
+      "physx_delta": -2.249289482831955,
+      "second": "physx_s7"
+    },
+    {
+      "first": "physx_s6",
+      "newton_delta": 0.2681571412831545,
+      "physx_delta": -4.99069877830334,
+      "second": "physx_s7"
+    },
+    {
+      "first": "physx_s6",
+      "newton_delta": 1.6666303668171167,
+      "physx_delta": -1.0707697693724185,
+      "second": "physx_s8"
+    },
+    {
+      "first": "physx_s8",
+      "newton_delta": -1.1951988749206066,
+      "physx_delta": 2.0770258746342734,
+      "second": "physx_s9"
+    }
+  ],
+  "schema_version": 1,
+  "spearman_rank_correlation": 0.5515151515151515,
+  "total_policy_pairs": 45,
+  "uncertainty_note": "Per-policy return intervals bootstrap vectorized episodes within one simulator process. They do not replace process-level replication."
+}

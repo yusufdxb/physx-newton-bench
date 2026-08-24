@@ -1,0 +1,32 @@
+{
+  "cross_backend": [
+    {
+      "preference_reversals": 18,
+      "repeat": "first",
+      "spearman": 0.23636363636363633
+    },
+    {
+      "preference_reversals": 14,
+      "repeat": "second",
+      "spearman": 0.5515151515151515
+    }
+  ],
+  "interpretation": "The deployability collapse repeats, but return ranking is also evaluation-seed sensitive. Do not attribute every pairwise reversal to the backend.",
+  "num_policies": 10,
+  "same_backend": {
+    "newton": {
+      "mean_success_first": 0.0,
+      "mean_success_second": 0.0,
+      "preference_reversals": 3,
+      "spearman": 0.9515151515151514
+    },
+    "physx": {
+      "mean_success_first": 0.9375,
+      "mean_success_second": 0.946875,
+      "preference_reversals": 11,
+      "spearman": 0.6484848484848483
+    }
+  },
+  "schema_version": 1,
+  "total_policy_pairs": 45
+}

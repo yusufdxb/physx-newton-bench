@@ -1,23 +1,35 @@
 # physx-newton-bench
 
-Controlled end-to-end comparison of the **PhysX** and **Newton (MuJoCo-Warp)** physics
-backends in **Isaac Lab 3.0**, on the stock `Isaac-Velocity-Flat-Unitree-Go2-v0`
-RL locomotion task, on a single consumer Blackwell-architecture NVIDIA GPU.
+Experimental comparison artifact for the **PhysX** and **Newton (MuJoCo-Warp)**
+physics backends in **Isaac Lab 3.0**, on the stock
+`Isaac-Velocity-Flat-Unitree-Go2-v0` RL locomotion task, on a single consumer
+Blackwell-architecture NVIDIA GPU.
+
+**Validity status:** the current committed learning results are **not
+publishable as a backend-only comparison**. A semantic preflight found
+uncontrolled non-backend differences in the resolved training configs:
+startup material and base-mass randomization are present only in the PhysX arm.
+The throughput artifacts remain useful as measured stock-config behavior, but
+the learning/reward comparison must be rerun after the config preflight passes.
+See
+[`results/strengthen/config_semantic_comparison.md`](results/strengthen/config_semantic_comparison.md)
+for the field-by-field audit.
 
 Three things are measured, in increasing order of novelty:
 
 1. **Compute**: pure-step throughput scaling over `num_envs` (10 timed repeats per
    point), end-to-end RL training throughput, and per-process VRAM (n=10 training
    seeds per backend).
-2. **Learning**: reward curves under identical stock config (deliberately untuned
-   for Newton), reported as IQM over 10 seeds with 95% bootstrap CIs.
+2. **Learning**: reward curves from the committed run, reported as IQM over 10
+   seeds with 95% bootstrap CIs, but currently config-confounded and not valid
+   as backend-only evidence.
 3. **Dynamics equivalence**: an open-loop probe showing both backends replay
    deterministically (repeat divergence exactly 0.0), quantifying their
    cross-backend divergence on the same asset,
    and documenting two migration footguns (joint-ordering mismatch, joint-drive
    gain representation).
 
-## Headline results
+## Headline Measurements, With Validity Caveat
 
 | | PhysX | Newton | ratio |
 |---|---|---|---|
@@ -36,11 +48,10 @@ Three things are measured, in increasing order of novelty:
   (1.64x), because learning overhead is backend-independent. Quote the number that
   matches your workload.
 - **At equal wall-clock, Newton is ahead; at equal iterations, PhysX converges
-  higher** on this PhysX-tuned asset (see both learning-curve figures in
-  [report.md](report.md)). The reward gap is an expected out-of-box-swap effect -
-  the dynamics-equivalence probe shows the two backends genuinely integrate
-  different dynamics, so the policies optimize different landscapes. It is not
-  evidence that either backend is "worse."
+  higher** on this committed artifact (see both learning-curve figures in
+  [report.md](report.md)). Because the resolved configs differ outside the
+  backend selector, do not cite the reward gap as a backend-only result until
+  the corrected run is produced.
 - Newton's near-flat memory curve (304→566 MiB while quadrupling envs, vs
   2451→3553 MiB for PhysX) directly buys `num_envs` headroom on
   memory-constrained GPUs, but it is a **stock-config footprint, not an
@@ -56,9 +67,10 @@ Three things are measured, in increasing order of novelty:
 export ISAACLAB_PATH=/path/to/IsaacLab
 export ISAACLAB_PYTHON=/path/to/venv/bin/python
 
-./scripts/run_strengthen.sh   # env capture + probe sweep + 10-seed training (~35 min)
+./scripts/run_strengthen.sh   # env capture + semantic preflight + probe sweep + 10-seed training (~35 min)
 ./scripts/run_pillar1.sh      # open-loop dynamics-equivalence probe (~5 min)
-python scripts/analyze_strengthen.py   # tables + figures from raw artifacts
+python3 scripts/compare_semantic_configs.py --fail-on-unsafe  # must pass before backend-only claims
+python3 scripts/analyze_strengthen.py   # tables + figures from raw artifacts
 ```
 
 Every number traces to an on-disk artifact under `results/` (tensorboard event
@@ -74,7 +86,9 @@ extracts, JSON, CSV): never stdout, which Kit captures. Version capture
 
 ## Caveats (read before quoting numbers)
 
-Single task, single robot, single GPU. Stock solver settings on both sides
+Single task, single robot, single GPU. The committed learning run has an
+uncontrolled config mismatch and requires rerun before backend-only learning
+claims. Stock solver settings on both sides
 (`MJWarpSolverCfg(njmax=65, nconmax=35, cone="pyramidal", integrator="implicitfast")`,
 1 substep: deliberately not retuned). Zero-action stepping in the throughput probe.
 The Newton backend in Isaac Lab 3.0 is experimental. No sim-to-real claims: which

@@ -1,0 +1,42 @@
+{
+  "checks": {
+    "action_contract": false,
+    "observation_schema": true,
+    "robot_body_order": false,
+    "robot_joint_order": false
+  },
+  "interpretation": "The cross-backend fixed-checkpoint result is invalid: action and/or joint-observation semantics differ at runtime.",
+  "left_backend": "physx",
+  "left_robot_joint_names": [
+    "FL_hip_joint",
+    "FR_hip_joint",
+    "RL_hip_joint",
+    "RR_hip_joint",
+    "FL_thigh_joint",
+    "FR_thigh_joint",
+    "RL_thigh_joint",
+    "RR_thigh_joint",
+    "FL_calf_joint",
+    "FR_calf_joint",
+    "RL_calf_joint",
+    "RR_calf_joint"
+  ],
+  "policy_joint_observation_safe": false,
+  "publication_safe": false,
+  "right_backend": "newton",
+  "right_robot_joint_names": [
+    "FL_hip_joint",
+    "FL_thigh_joint",
+    "FL_calf_joint",
+    "FR_hip_joint",
+    "FR_thigh_joint",
+    "FR_calf_joint",
+    "RL_hip_joint",
+    "RL_thigh_joint",
+    "RL_calf_joint",
+    "RR_hip_joint",
+    "RR_thigh_joint",
+    "RR_calf_joint"
+  ],
+  "schema_version": 1
+}

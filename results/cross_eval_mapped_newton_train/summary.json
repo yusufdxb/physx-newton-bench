@@ -1,0 +1,82 @@
+{
+  "interpretation": "At least one fixed-checkpoint preference reverses across backends.",
+  "max_rank_shift": 2,
+  "num_policies": 3,
+  "per_policy": [
+    {
+      "newton_mean_return": 30.062814995646477,
+      "newton_minus_physx_return": {
+        "ci_high": 9.198400254904117,
+        "ci_low": 3.292005175894883,
+        "difference": 6.245884224947076
+      },
+      "newton_rank": 1,
+      "newton_success_rate": 1.0,
+      "physx_mean_return": 23.8169307706994,
+      "physx_rank": 3,
+      "physx_success_rate": 0.9375,
+      "policy_id": "newton_s0"
+    },
+    {
+      "newton_mean_return": 29.514286026358604,
+      "newton_minus_physx_return": {
+        "ci_high": 7.852508022962137,
+        "ci_low": 0.6382811405695975,
+        "difference": 4.236899099312723
+      },
+      "newton_rank": 3,
+      "newton_success_rate": 0.953125,
+      "physx_mean_return": 25.27738692704588,
+      "physx_rank": 2,
+      "physx_success_rate": 0.921875,
+      "policy_id": "newton_s1"
+    },
+    {
+      "newton_mean_return": 30.030644081532955,
+      "newton_minus_physx_return": {
+        "ci_high": 5.976717103645204,
+        "ci_low": 1.7252034267410636,
+        "difference": 3.8682582154870033
+      },
+      "newton_rank": 2,
+      "newton_success_rate": 0.984375,
+      "physx_mean_return": 26.162385866045952,
+      "physx_rank": 1,
+      "physx_success_rate": 1.0,
+      "policy_id": "newton_s2"
+    }
+  ],
+  "preference_reversal_count": 2,
+  "preference_reversal_fraction": 0.6666666666666666,
+  "probe_survives": true,
+  "ranks": {
+    "newton": {
+      "newton_s0": 1,
+      "newton_s1": 3,
+      "newton_s2": 2
+    },
+    "physx": {
+      "newton_s0": 3,
+      "newton_s1": 2,
+      "newton_s2": 1
+    }
+  },
+  "reversals": [
+    {
+      "first": "newton_s0",
+      "newton_delta": 0.5485289692878723,
+      "physx_delta": -1.4604561563464813,
+      "second": "newton_s1"
+    },
+    {
+      "first": "newton_s0",
+      "newton_delta": 0.032170914113521576,
+      "physx_delta": -2.3454550953465514,
+      "second": "newton_s2"
+    }
+  ],
+  "schema_version": 1,
+  "spearman_rank_correlation": -0.5,
+  "total_policy_pairs": 3,
+  "uncertainty_note": "Per-policy return intervals bootstrap vectorized episodes within one simulator process. They do not replace process-level replication."
+}

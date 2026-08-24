@@ -1,0 +1,290 @@
+{
+  "interpretation": "At least one fixed-checkpoint preference reverses across backends.",
+  "max_rank_shift": 8,
+  "num_policies": 10,
+  "per_policy": [
+    {
+      "newton_mean_return": -3.741051757708192,
+      "newton_minus_physx_return": {
+        "ci_high": -32.713000533171,
+        "ci_low": -36.609660271508616,
+        "difference": -34.693176459521055
+      },
+      "newton_rank": 5,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 30.952124701812863,
+      "physx_rank": 3,
+      "physx_success_rate": 0.984375,
+      "policy_id": "physx_s0"
+    },
+    {
+      "newton_mean_return": -4.703205237165093,
+      "newton_minus_physx_return": {
+        "ci_high": -23.417325270641594,
+        "ci_low": -28.639050555136055,
+        "difference": -26.01176170632243
+      },
+      "newton_rank": 8,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 21.308556469157338,
+      "physx_rank": 10,
+      "physx_success_rate": 0.75,
+      "policy_id": "physx_s1"
+    },
+    {
+      "newton_mean_return": -4.720744580030441,
+      "newton_minus_physx_return": {
+        "ci_high": -35.50116256475449,
+        "ci_low": -39.02891454901546,
+        "difference": -37.40345747768879
+      },
+      "newton_rank": 9,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 32.68271289765835,
+      "physx_rank": 1,
+      "physx_success_rate": 0.96875,
+      "policy_id": "physx_s2"
+    },
+    {
+      "newton_mean_return": -3.9359189067035913,
+      "newton_minus_physx_return": {
+        "ci_high": -27.85808053148212,
+        "ci_low": -33.55490691239247,
+        "difference": -30.78983507119119
+      },
+      "newton_rank": 7,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 26.8539161644876,
+      "physx_rank": 9,
+      "physx_success_rate": 0.9375,
+      "policy_id": "physx_s3"
+    },
+    {
+      "newton_mean_return": -3.800276042893529,
+      "newton_minus_physx_return": {
+        "ci_high": -32.46853897806723,
+        "ci_low": -36.34612543473486,
+        "difference": -34.458018687553704
+      },
+      "newton_rank": 6,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 30.657742644660175,
+      "physx_rank": 4,
+      "physx_success_rate": 0.953125,
+      "policy_id": "physx_s4"
+    },
+    {
+      "newton_mean_return": -3.4125340320169926,
+      "newton_minus_physx_return": {
+        "ci_high": -32.630022375192496,
+        "ci_low": -36.49390677614137,
+        "difference": -34.658562920987606
+      },
+      "newton_rank": 1,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 31.246028888970613,
+      "physx_rank": 2,
+      "physx_success_rate": 0.96875,
+      "policy_id": "physx_s5"
+    },
+    {
+      "newton_mean_return": -3.4196350490674376,
+      "newton_minus_physx_return": {
+        "ci_high": -31.088196270726623,
+        "ci_low": -35.27397469906136,
+        "difference": -33.235694899223745
+      },
+      "newton_rank": 2,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 29.816059850156307,
+      "physx_rank": 6,
+      "physx_success_rate": 0.953125,
+      "policy_id": "physx_s6"
+    },
+    {
+      "newton_mean_return": -3.517897639423609,
+      "newton_minus_physx_return": {
+        "ci_high": -31.541515893395992,
+        "ci_low": -36.17798708947375,
+        "difference": -33.905979588627815
+      },
+      "newton_rank": 3,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 30.388081949204206,
+      "physx_rank": 5,
+      "physx_success_rate": 0.875,
+      "policy_id": "physx_s7"
+    },
+    {
+      "newton_mean_return": -4.816628444939852,
+      "newton_minus_physx_return": {
+        "ci_high": -30.768970778770747,
+        "ci_low": -34.94663416715339,
+        "difference": -32.96726085618138
+      },
+      "newton_rank": 10,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 28.15063241124153,
+      "physx_rank": 7,
+      "physx_success_rate": 0.984375,
+      "policy_id": "physx_s8"
+    },
+    {
+      "newton_mean_return": -3.544682390987873,
+      "newton_minus_physx_return": {
+        "ci_high": -28.50985421878286,
+        "ci_low": -32.40696408967487,
+        "difference": -30.500957056879997
+      },
+      "newton_rank": 4,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 26.956274665892124,
+      "physx_rank": 8,
+      "physx_success_rate": 1.0,
+      "policy_id": "physx_s9"
+    }
+  ],
+  "preference_reversal_count": 18,
+  "preference_reversal_fraction": 0.4,
+  "probe_survives": true,
+  "ranks": {
+    "newton": {
+      "physx_s0": 5,
+      "physx_s1": 8,
+      "physx_s2": 9,
+      "physx_s3": 7,
+      "physx_s4": 6,
+      "physx_s5": 1,
+      "physx_s6": 2,
+      "physx_s7": 3,
+      "physx_s8": 10,
+      "physx_s9": 4
+    },
+    "physx": {
+      "physx_s0": 3,
+      "physx_s1": 10,
+      "physx_s2": 1,
+      "physx_s3": 9,
+      "physx_s4": 4,
+      "physx_s5": 2,
+      "physx_s6": 6,
+      "physx_s7": 5,
+      "physx_s8": 7,
+      "physx_s9": 8
+    }
+  },
+  "reversals": [
+    {
+      "first": "physx_s0",
+      "newton_delta": 0.9796928223222494,
+      "physx_delta": -1.7305881958454847,
+      "second": "physx_s2"
+    },
+    {
+      "first": "physx_s0",
+      "newton_delta": -0.3214167086407542,
+      "physx_delta": 1.1360648516565561,
+      "second": "physx_s6"
+    },
+    {
+      "first": "physx_s0",
+      "newton_delta": -0.2231541182845831,
+      "physx_delta": 0.5640427526086569,
+      "second": "physx_s7"
+    },
+    {
+      "first": "physx_s0",
+      "newton_delta": -0.1963693667203188,
+      "physx_delta": 3.995850035920739,
+      "second": "physx_s9"
+    },
+    {
+      "first": "physx_s1",
+      "newton_delta": 0.017539342865347862,
+      "physx_delta": -11.37415642850101,
+      "second": "physx_s2"
+    },
+    {
+      "first": "physx_s1",
+      "newton_delta": 0.11342320777475834,
+      "physx_delta": -6.842075942084193,
+      "second": "physx_s8"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -0.7848256733268499,
+      "physx_delta": 5.828796733170748,
+      "second": "physx_s3"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -0.9204685371369123,
+      "physx_delta": 2.0249702529981732,
+      "second": "physx_s4"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -1.3082105480134487,
+      "physx_delta": 1.4366840086877346,
+      "second": "physx_s5"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -1.3011095309630036,
+      "physx_delta": 2.866653047502041,
+      "second": "physx_s6"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -1.2028469406068325,
+      "physx_delta": 2.2946309484541416,
+      "second": "physx_s7"
+    },
+    {
+      "first": "physx_s2",
+      "newton_delta": -1.1760621890425682,
+      "physx_delta": 5.726438231766224,
+      "second": "physx_s9"
+    },
+    {
+      "first": "physx_s3",
+      "newton_delta": 0.8807095382362604,
+      "physx_delta": -1.296716246753931,
+      "second": "physx_s8"
+    },
+    {
+      "first": "physx_s4",
+      "newton_delta": -0.3806409938260913,
+      "physx_delta": 0.8416827945038676,
+      "second": "physx_s6"
+    },
+    {
+      "first": "physx_s4",
+      "newton_delta": -0.28237840346992016,
+      "physx_delta": 0.2696606954559684,
+      "second": "physx_s7"
+    },
+    {
+      "first": "physx_s4",
+      "newton_delta": -0.25559365190565586,
+      "physx_delta": 3.7014679787680507,
+      "second": "physx_s9"
+    },
+    {
+      "first": "physx_s6",
+      "newton_delta": 0.09826259035617113,
+      "physx_delta": -0.5720220990478992,
+      "second": "physx_s7"
+    },
+    {
+      "first": "physx_s8",
+      "newton_delta": -1.2719460539519787,
+      "physx_delta": 1.1943577453494072,
+      "second": "physx_s9"
+    }
+  ],
+  "schema_version": 1,
+  "spearman_rank_correlation": 0.23636363636363633,
+  "total_policy_pairs": 45,
+  "uncertainty_note": "Per-policy return intervals bootstrap vectorized episodes within one simulator process. They do not replace process-level replication."
+}

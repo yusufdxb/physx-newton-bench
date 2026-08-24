@@ -18,6 +18,8 @@ import os
 
 import numpy as np
 
+from compare_semantic_configs import DEFAULT_OUT, DEFAULT_PARAMS, build_summary
+
 BENCH = os.environ.get("BENCH_DIR", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SDIR = os.path.join(BENCH, "results", "strengthen")
 ENV_COUNTS = [256, 1024, 2048, 4096]
@@ -60,8 +62,12 @@ def load_manifest():
 
 def load_curves(manifest):
     """Per run: arrays (wall_s, reward, fps) from the tensorboard event file."""
-    from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
     curves = {}
+    try:
+        from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
+    except ImportError:
+        print("[WARN] tensorboard is not installed; falling back to committed results10.csv")
+        return load_curves_csv()
     for r in manifest:
         ld = os.path.expandvars(r["log_dir"].strip())
         ev = sorted(glob.glob(os.path.join(ld, "events.out.tfevents.*")), key=os.path.getmtime)
@@ -77,10 +83,63 @@ def load_curves(manifest):
         reward = np.array([e.value for e in rew])
         fpsv = np.array([fps.get(e.step, np.nan) for e in rew])
         curves[(r["backend"], int(r["seed"]))] = (wall, reward, fpsv)
+    if not curves:
+        print("[WARN] no TensorBoard event files found; falling back to committed results10.csv")
+        return load_curves_csv()
+    expected = {(b, s) for b in BACKENDS for s in range(10)}
+    missing = sorted(expected - set(curves))
+    if missing:
+        print(
+            "[WARN] TensorBoard event coverage is incomplete; falling back to committed "
+            f"results10.csv. Missing runs: {missing}"
+        )
+        return load_curves_csv()
     return curves
 
 
+def load_curves_csv():
+    """Per run arrays from the committed CSV extract.
+
+    This lets a fresh clone regenerate summary tables and figures without access to
+    the original machine's TensorBoard log directories.
+    """
+    path = os.path.join(SDIR, "results10.csv")
+    curves = {}
+    if not os.path.exists(path):
+        return curves
+    by_run = {}
+    with open(path) as f:
+        for row in csv.DictReader(f):
+            key = (row["backend"], int(row["seed"]))
+            by_run.setdefault(key, []).append(row)
+    for key, rows in by_run.items():
+        rows.sort(key=lambda r: int(r["iteration"]))
+        wall = np.array([float(r["train_wall_s"]) for r in rows], dtype=float)
+        reward = np.array([float(r["mean_reward"]) for r in rows], dtype=float)
+        fps = np.array([float(r["total_fps"]) for r in rows], dtype=float)
+        curves[key] = (wall, reward, fps)
+    return curves
+
+
+def assert_publication_safe_configs():
+    """Refuse aggregate reporting when resolved configs are not comparable."""
+    semantic = build_summary(DEFAULT_PARAMS, DEFAULT_OUT)
+    if semantic["publication_safe"]:
+        return semantic
+    unsafe = ", ".join(row["field"] for row in semantic["unsafe_fields"]) or "unknown fields"
+    raise RuntimeError(
+        "refusing to generate publication-style strengthen summary because the "
+        "PhysX/Newton resolved configs are not semantically controlled. "
+        f"Unsafe fields: {unsafe}. Recursive diff classification counts: "
+        f"{semantic['classification_counts']}. Run "
+        "`python3 scripts/compare_semantic_configs.py --fail-on-unsafe` for "
+        "the field-by-field manifest, then rerun the suite after correcting "
+        "the non-backend config confounds."
+    )
+
+
 def main():
+    semantic = assert_publication_safe_configs()
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -89,7 +148,7 @@ def main():
     probes = load_probes()
     manifest = load_manifest()
     curves = load_curves(manifest)
-    summary = {"probes": {}, "training": {}}
+    summary = {"probes": {}, "training": {}, "semantic_config": semantic}
 
     # ---------- probe table ----------
     for (b, ne), d in sorted(probes.items()):
@@ -104,6 +163,14 @@ def main():
         fps_all = [np.nanmean(curves[(b, s)][2][10:]) for s in range(10) if (b, s) in curves]
         walls = [float(r["total_wall_s"]) for r in manifest if r["backend"] == b]
         procs = [float(r["proc_peak_mib"]) for r in manifest if r["backend"] == b and r["proc_peak_mib"]]
+        if not finals:
+            raise RuntimeError(
+                f"no training curves found for backend {b!r}; expected TensorBoard events or results10.csv in {SDIR}"
+            )
+        if len(finals) != 10:
+            raise RuntimeError(
+                f"backend {b!r} has {len(finals)} valid seeds, not 10; refusing to label analysis as n=10."
+            )
         summary["training"][b] = {
             "n_seeds": len(finals),
             "final_reward_iqm": iqm(finals), "final_reward_ci": boot_ci(finals),
@@ -177,7 +244,10 @@ def main():
     ax.tick_params(colors="#898781")
     ax.set_xlabel("training wall-clock (s, sim startup excluded)", color="#52514e")
     ax.set_ylabel("Train/mean_reward: IQM over 10 seeds, 95% bootstrap CI", color="#52514e")
-    ax.set_title("Learning curves, identical stock config (n=10 seeds/backend)",
+    title_prefix = "Learning curves, backend-only config" if semantic["publication_safe"] else (
+        "Learning curves, config-confounded artifact"
+    )
+    ax.set_title(f"{title_prefix} (n=10 seeds/backend)",
                  color="#0b0b0b", fontsize=11)
     ax.set_xlim(right=tmax * 1.12)
     fig.tight_layout()
@@ -208,7 +278,7 @@ def main():
     ax.tick_params(colors="#898781")
     ax.set_xlabel("training iteration", color="#52514e")
     ax.set_ylabel("Train/mean_reward: IQM over 10 seeds, 95% bootstrap CI", color="#52514e")
-    ax.set_title("Learning curves vs iteration, identical stock config (n=10 seeds/backend)",
+    ax.set_title(f"{title_prefix} vs iteration (n=10 seeds/backend)",
                  color="#0b0b0b", fontsize=11)
     ax.set_xlim(right=len(it) * 1.12)
     fig.tight_layout()
@@ -216,7 +286,15 @@ def main():
     plt.close(fig)
 
     # ---------- markdown ----------
-    lines = ["# Strengthening-suite summary\n", "## Pure-step throughput + per-process VRAM\n",
+    lines = ["# Strengthening-suite summary\n"]
+    if not semantic["publication_safe"]:
+        lines += [
+            "## Scientific validity preflight\n",
+            "**INVALID PENDING RERUN for backend-only learning claims.** The committed resolved configs contain "
+            "uncontrolled non-backend differences. Run `python3 scripts/compare_semantic_configs.py "
+            "--fail-on-unsafe` for the machine-readable manifest and rerun after the preflight passes.\n",
+        ]
+    lines += ["## Pure-step throughput + per-process VRAM\n",
              "| num_envs | PhysX steps/s | Newton steps/s | ratio | PhysX VRAM MiB | Newton VRAM MiB |",
              "|---|---|---|---|---|---|"]
     for ne in ENV_COUNTS:

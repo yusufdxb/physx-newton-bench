@@ -1,10 +1,16 @@
 # PhysX vs Newton (MuJoCo-Warp) in Isaac Lab 3.0: an end-to-end comparison
 
-Controlled comparison of the **PhysX** solver vs Newton's **MuJoCo-Warp** solver on
-the identical stock flat-terrain quadruped velocity-tracking task
-(`Isaac-Velocity-Flat-Unitree-Go2-v0`). Only the physics backend changes; the
-resolved config is dumped to disk for every run and diffed: only the
-physics-manager block differs between arms.
+Experimental comparison of the **PhysX** solver vs Newton's **MuJoCo-Warp**
+solver on the stock flat-terrain quadruped velocity-tracking task
+(`Isaac-Velocity-Flat-Unitree-Go2-v0`).
+
+**Current validity verdict:** invalid pending rerun for backend-only learning
+claims. The resolved configs are dumped under `results/strengthen/params/`, and
+`python3 scripts/compare_semantic_configs.py --fail-on-unsafe` finds uncontrolled non-backend
+differences: startup material and base-mass randomization are present only in
+the PhysX arm. The numbers below remain an auditable artifact of the run that
+was performed; they must not be presented as evidence that only the physics
+backend changed.
 
 Measurement dates: 2026-06-13 (pilot, dynamics probe) and 2026-07-02
 (strengthened suite reported here). A 3-seed pilot preceded this; everything
@@ -38,9 +44,11 @@ class PhysicsCfg(PresetCfg):
     physx = default
 ```
 
-The preset swaps **only** the physics manager. Robot, rewards, observations,
-events, `sim.dt = 0.005`, `decimation = 4`, and the full rsl_rl/PPO config are
-shared. **Both backends integrate one physics step per `sim.dt` at 200 Hz**
+The intended preset should swap **only** the physics manager. In the committed
+resolved configs, robot, rewards, observations, `sim.dt = 0.005`, `decimation =
+4`, and the full rsl_rl/PPO config are shared, but the event configuration is
+not: PhysX has startup material and base-mass randomization that Newton lacks.
+**Both backends integrate one physics step per `sim.dt` at 200 Hz**
 (Newton `num_substeps: 1`; PhysX has no substep multiplier in this config, only
 solver iteration counts): the resolved per-run configs for one run of each
 backend are committed under
@@ -94,11 +102,14 @@ blocks of 100 steps** per point (`scripts/probe_sweep.py`); VRAM is per-PID
   mean is 1.93x. Point estimates from single probes are noisy at the ±10% level -
   hence the repeats.
 
-## 2. End-to-end training (n=10 seeds per backend)
+## 2. End-to-end training artifact (n=10 seeds per backend, config-confounded)
 
-2048 envs, 300 iterations, identical stock PPO. Manifest:
+2048 envs, 300 iterations, identical stock PPO hyperparameters. Manifest:
 `results/strengthen/manifest10.csv`; per-iteration extract:
 `results/strengthen/results10.csv`. All 20 runs exited 0.
+
+This section is not valid as a backend-only learning comparison until the
+non-backend config mismatch is removed and all 20 runs are rerun.
 
 | metric | PhysX | Newton |
 |---|---|---|
@@ -117,7 +128,7 @@ End-to-end training throughput advantage is **1.64x**: smaller than the ~2x
 pure-stepping gap because the learning side (PPO update, logging) is
 backend-independent. Quote whichever matches your workload; both are real.
 
-## 3. Learning parity: both views, because they disagree
+## 3. Learning artifact: both views, but not backend-only evidence
 
 ![learning vs wall-clock](results/strengthen/fig_learning.png)
 ![learning vs iteration](results/strengthen/fig_learning_iter.png)
@@ -128,11 +139,12 @@ backend-independent. Quote whichever matches your workload; both are real.
 - **Vs iteration** (second figure): the curves track each other for ~90
   iterations, then diverge; PhysX converges to a clearly higher reward on this
   asset (non-overlapping CIs at iteration 300).
-- Interpretation: this is an **out-of-box-swap effect on a PhysX-tuned asset**,
-  not a quality verdict. Section 4 shows the two backends genuinely integrate
-  different dynamics, so the two policy populations optimize different reward
-  landscapes. A fair asymptotic-quality comparison would need per-backend tuning
-  (and ultimately transfer evaluation), both out of scope.
+- Interpretation: this committed artifact is **not** a quality verdict and is
+  not backend-only evidence. Section 4 shows the two backends can integrate
+  different dynamics, but the reward curves above are additionally confounded
+  by the resolved event mismatch. A fair asymptotic-quality comparison would
+  need a passing semantic-config preflight, rerun training, per-backend tuning,
+  and ultimately transfer evaluation.
 
 ## 4. Open-loop dynamics-equivalence probe
 
@@ -179,6 +191,8 @@ re-validation.
 ## Caveats
 
 - Single task (Go2 flat velocity), single robot, single GPU.
+- Current learning results have a resolved-config mismatch outside the backend
+  selector and require rerun before publication-style backend-only claims.
 - Stock solver settings both sides; no per-backend tuning attempted.
 - Throughput probe uses zero actions (policy-driven stepping can differ).
 - Dynamics probe: one action tape, one dt/decimation; late-time divergence mixes

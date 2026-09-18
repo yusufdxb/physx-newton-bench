@@ -1,0 +1,589 @@
+{
+  "classification_counts": {
+    "harmless representation": 5,
+    "required backend-specific": 31,
+    "uncontrolled confound": 2
+  },
+  "differences": [
+    {
+      "classification": "uncontrolled confound",
+      "newton": "<missing>",
+      "path": "env.events.add_base_mass",
+      "physx": {
+        "func": "isaaclab.envs.mdp.events:randomize_rigid_body_mass",
+        "interval_range_s": null,
+        "is_global_time": false,
+        "min_step_count_between_reset": 0,
+        "mode": "startup",
+        "params": {
+          "asset_cfg": {
+            "body_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "body_names": "base",
+            "fixed_tendon_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "fixed_tendon_names": null,
+            "joint_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "joint_names": null,
+            "name": "robot",
+            "object_collection_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "object_collection_names": null,
+            "preserve_order": false
+          },
+          "mass_distribution_params": [
+            -1.0,
+            3.0
+          ],
+          "operation": "add"
+        }
+      },
+      "rationale": "PhysX randomizes base mass at startup with add range [-1, 3], while Newton has no matching event."
+    },
+    {
+      "classification": "harmless representation",
+      "newton": "<missing>",
+      "path": "env.events.base_com",
+      "physx": null,
+      "rationale": "PhysX dumps a disabled event as null while Newton omits it."
+    },
+    {
+      "classification": "uncontrolled confound",
+      "newton": "<missing>",
+      "path": "env.events.physics_material",
+      "physx": {
+        "func": "isaaclab.envs.mdp.events:randomize_rigid_body_material",
+        "interval_range_s": null,
+        "is_global_time": false,
+        "min_step_count_between_reset": 0,
+        "mode": "startup",
+        "params": {
+          "asset_cfg": {
+            "body_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "body_names": ".*",
+            "fixed_tendon_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "fixed_tendon_names": null,
+            "joint_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "joint_names": null,
+            "name": "robot",
+            "object_collection_ids": {
+              "__slice__": [
+                null,
+                null,
+                null
+              ]
+            },
+            "object_collection_names": null,
+            "preserve_order": false
+          },
+          "dynamic_friction_range": [
+            0.6,
+            0.6
+          ],
+          "num_buckets": 64,
+          "restitution_range": [
+            0.0,
+            0.0
+          ],
+          "static_friction_range": [
+            0.8,
+            0.8
+          ]
+        }
+      },
+      "rationale": "PhysX randomizes robot rigid-body material at startup, while Newton has no matching event."
+    },
+    {
+      "classification": "harmless representation",
+      "newton": "$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench10/2026-07-02_18-36-10_newton_s0",
+      "path": "env.log_dir",
+      "physx": "$ISAACLAB_PATH/logs/rsl_rl/go2flat_bench10/2026-07-02_18-16-56_physx_s0",
+      "rationale": "Run timestamp and backend name identify output directories only."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "isaaclab_newton.sensors.contact_sensor.contact_sensor:ContactSensor",
+      "path": "env.scene.contact_forces.class_type",
+      "physx": "isaaclab_physx.sensors.contact_sensor.contact_sensor:ContactSensor",
+      "rationale": "Contact sensor implementation follows the selected backend package."
+    },
+    {
+      "classification": "harmless representation",
+      "newton": [],
+      "path": "env.scene.contact_forces.filter_shape_prim_expr",
+      "physx": "<missing>",
+      "rationale": "Newton dumps explicit empty contact sensor shape filters where PhysX omits them."
+    },
+    {
+      "classification": "harmless representation",
+      "newton": [],
+      "path": "env.scene.contact_forces.sensor_shape_prim_expr",
+      "physx": "<missing>",
+      "rationale": "Newton dumps explicit empty contact sensor shape filters where PhysX omits them."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.bounce_threshold_velocity",
+      "physx": 0.5,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "isaaclab_newton.physics.newton_manager:NewtonManager",
+      "path": "env.sim.physics.class_type",
+      "physx": "isaaclab_physx.physics.physx_manager:PhysxManager",
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": false,
+      "path": "env.sim.physics.debug_mode",
+      "physx": "<missing>",
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.enable_ccd",
+      "physx": false,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.enable_enhanced_determinism",
+      "physx": false,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.enable_external_forces_every_iteration",
+      "physx": false,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.enable_scene_query_support",
+      "physx": false,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.enable_stabilization",
+      "physx": false,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.friction_correlation_distance",
+      "physx": 0.025,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.friction_offset_threshold",
+      "physx": 0.04,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_collision_stack_size",
+      "physx": 67108864,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_found_lost_aggregate_pairs_capacity",
+      "physx": 33554432,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_found_lost_pairs_capacity",
+      "physx": 2097152,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_heap_capacity",
+      "physx": 67108864,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_max_num_partitions",
+      "physx": 8,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_max_particle_contacts",
+      "physx": 1048576,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_max_rigid_contact_count",
+      "physx": 8388608,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_max_rigid_patch_count",
+      "physx": 327680,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_max_soft_body_contacts",
+      "physx": 1048576,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_temp_buffer_capacity",
+      "physx": 16777216,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.gpu_total_aggregate_pairs_capacity",
+      "physx": 2097152,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.max_position_iteration_count",
+      "physx": 255,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.max_velocity_iteration_count",
+      "physx": 255,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.min_position_iteration_count",
+      "physx": 1,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.min_velocity_iteration_count",
+      "physx": 0,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": 1,
+      "path": "env.sim.physics.num_substeps",
+      "physx": "<missing>",
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.solve_articulation_contact_last",
+      "physx": false,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": {
+        "actuator_gears": null,
+        "ccd_iterations": 35,
+        "cone": "pyramidal",
+        "default_actuator_gear": null,
+        "disable_contacts": false,
+        "impratio": 1,
+        "integrator": "implicitfast",
+        "iterations": 100,
+        "ls_iterations": 50,
+        "ls_parallel": false,
+        "nconmax": 35,
+        "njmax": 65,
+        "save_to_mjcf": null,
+        "solver": "newton",
+        "solver_type": "mujoco_warp",
+        "update_data_interval": 1,
+        "use_mujoco_contacts": true,
+        "use_mujoco_cpu": false
+      },
+      "path": "env.sim.physics.solver_cfg",
+      "physx": "<missing>",
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": "<missing>",
+      "path": "env.sim.physics.solver_type",
+      "physx": 1,
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "required backend-specific",
+      "newton": true,
+      "path": "env.sim.physics.use_cuda_graph",
+      "physx": "<missing>",
+      "rationale": "Backend manager and solver/contact buffer settings are selected by the physics preset."
+    },
+    {
+      "classification": "harmless representation",
+      "newton": "newton_s0",
+      "path": "agent.run_name",
+      "physx": "physx_s0",
+      "rationale": "Run name labels the TensorBoard/log directory only."
+    }
+  ],
+  "fields": [
+    {
+      "classification": "harmless representation",
+      "field": "task",
+      "newton": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+      "physx": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+      "verdict": "Same task is specified by run_strengthen.sh and probe artifacts; task id is not embedded in the committed env YAML."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "observations",
+      "newton": "{\"policy\": {\"actions\": {\"clip\": null, \"flatten_history_dim\": true, \"func\": \"isaaclab.envs.mdp.observations:last_action\", \"history_length\": 0, \"modifiers\": null, \"noise\": null, \"...",
+      "physx": "{\"policy\": {\"actions\": {\"clip\": null, \"flatten_history_dim\": true, \"func\": \"isaaclab.envs.mdp.observations:last_action\", \"history_length\": 0, \"modifiers\": null, \"noise\": null, \"...",
+      "verdict": "Policy observation terms, noise, and concatenation match."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "actions",
+      "newton": "{\"joint_pos\": {\"asset_name\": \"robot\", \"class_type\": \"isaaclab.envs.mdp.actions.joint_actions:JointPositionAction\", \"clip\": null, \"debug_vis\": false, \"joint_names\": [\".*\"], \"offs...",
+      "physx": "{\"joint_pos\": {\"asset_name\": \"robot\", \"class_type\": \"isaaclab.envs.mdp.actions.joint_actions:JointPositionAction\", \"clip\": null, \"debug_vis\": false, \"joint_names\": [\".*\"], \"offs...",
+      "verdict": "Joint position action config matches."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "control frequency",
+      "newton": "50.0 Hz",
+      "physx": "50.0 Hz",
+      "verdict": "Same policy rate from dt=0.005 and decimation=4."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "timestep",
+      "newton": 0.005,
+      "physx": 0.005,
+      "verdict": "Same simulation timestep."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "decimation",
+      "newton": 4,
+      "physx": 4,
+      "verdict": "Same action decimation."
+    },
+    {
+      "classification": "required backend-specific",
+      "field": "solver/contact",
+      "newton": "{\"class_type\": \"isaaclab_newton.physics.newton_manager:NewtonManager\", \"debug_mode\": false, \"num_substeps\": 1, \"solver_cfg\": {\"actuator_gears\": null, \"ccd_iterations\": 35, \"cone...",
+      "physx": "{\"bounce_threshold_velocity\": 0.5, \"class_type\": \"isaaclab_physx.physics.physx_manager:PhysxManager\", \"enable_ccd\": false, \"enable_enhanced_determinism\": false, \"enable_external...",
+      "verdict": "Physics manager and solver/contact buffer settings intentionally differ by backend."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "actuator",
+      "newton": "{\"base_legs\": {\"armature\": null, \"class_type\": \"isaaclab.actuators.actuator_pd:DCMotor\", \"damping\": 0.5, \"dynamic_friction\": null, \"effort_limit\": 23.5, \"effort_limit_sim\": null...",
+      "physx": "{\"base_legs\": {\"armature\": null, \"class_type\": \"isaaclab.actuators.actuator_pd:DCMotor\", \"damping\": 0.5, \"dynamic_friction\": null, \"effort_limit\": 23.5, \"effort_limit_sim\": null...",
+      "verdict": "DCMotor stiffness, damping, limits, friction, and saturation match."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "rewards",
+      "newton": "{\"action_rate_l2\": {\"func\": \"isaaclab.envs.mdp.rewards:action_rate_l2\", \"params\": {}, \"weight\": -0.01}, \"ang_vel_xy_l2\": {\"func\": \"isaaclab.envs.mdp.rewards:ang_vel_xy_l2\", \"par...",
+      "physx": "{\"action_rate_l2\": {\"func\": \"isaaclab.envs.mdp.rewards:action_rate_l2\", \"params\": {}, \"weight\": -0.01}, \"ang_vel_xy_l2\": {\"func\": \"isaaclab.envs.mdp.rewards:ang_vel_xy_l2\", \"par...",
+      "verdict": "Reward terms, weights, and params match."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "terminations",
+      "newton": "{\"base_contact\": {\"func\": \"isaaclab.envs.mdp.terminations:illegal_contact\", \"params\": {\"sensor_cfg\": {\"body_ids\": {\"__slice__\": [null, null, null]}, \"body_names\": \"base\", \"fixed...",
+      "physx": "{\"base_contact\": {\"func\": \"isaaclab.envs.mdp.terminations:illegal_contact\", \"params\": {\"sensor_cfg\": {\"body_ids\": {\"__slice__\": [null, null, null]}, \"body_names\": \"base\", \"fixed...",
+      "verdict": "Timeout and base-contact termination configs match."
+    },
+    {
+      "classification": "uncontrolled confound",
+      "field": "reset distributions",
+      "newton": "reset_base/reset_robot_joints match; physics_material and add_base_mass startup events missing",
+      "physx": "reset_base/reset_robot_joints match; physics_material and add_base_mass startup events present",
+      "verdict": "Startup material and mass randomization are not controlled across backends."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "policy architecture",
+      "newton": "{\"actor\": {\"activation\": \"elu\", \"class_name\": \"MLPModel\", \"distribution_cfg\": {\"class_name\": \"GaussianDistribution\", \"init_std\": 1.0, \"std_type\": \"scalar\"}, \"hidden_dims\": [128,...",
+      "physx": "{\"actor\": {\"activation\": \"elu\", \"class_name\": \"MLPModel\", \"distribution_cfg\": {\"class_name\": \"GaussianDistribution\", \"init_std\": 1.0, \"std_type\": \"scalar\"}, \"hidden_dims\": [128,...",
+      "verdict": "Actor/critic MLP shapes, activations, and distribution config match."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "PPO hyperparams",
+      "newton": "{\"class_name\": \"PPO\", \"clip_param\": 0.2, \"desired_kl\": 0.01, \"entropy_coef\": 0.01, \"gamma\": 0.99, \"lam\": 0.95, \"learning_rate\": 0.001, \"max_grad_norm\": 1.0, \"normalize_advantage...",
+      "physx": "{\"class_name\": \"PPO\", \"clip_param\": 0.2, \"desired_kl\": 0.01, \"entropy_coef\": 0.01, \"gamma\": 0.99, \"lam\": 0.95, \"learning_rate\": 0.001, \"max_grad_norm\": 1.0, \"normalize_advantage...",
+      "verdict": "PPO algorithm config and rollout length match."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "normalization",
+      "newton": "{\"empirical_normalization\": {}, \"obs_groups\": {}}",
+      "physx": "{\"empirical_normalization\": {}, \"obs_groups\": {}}",
+      "verdict": "No empirical normalization and no agent obs groups in either arm."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "seeds",
+      "newton": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "physx": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "verdict": "Manifest has seeds 0-9 and exit code 0 for both backends."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "env count",
+      "newton": 2048,
+      "physx": 2048,
+      "verdict": "Training resolved env count is 2048 for both arms."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "training horizon",
+      "newton": {
+        "csv_complete": true,
+        "max_iterations": 300
+      },
+      "physx": {
+        "csv_complete": true,
+        "max_iterations": 300
+      },
+      "verdict": "Both arms have 300 configured iterations and 300 CSV rows per seed."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "eval protocol",
+      "newton": "No separate evaluation rollouts in committed artifacts",
+      "physx": "No separate evaluation rollouts in committed artifacts",
+      "verdict": "Claims must be limited to training reward, throughput, and probes; there is no held-out policy evaluation protocol."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "checkpoint selection",
+      "newton": {
+        "load_checkpoint": "model_.*.pt",
+        "resume": false,
+        "save_interval": 50
+      },
+      "physx": {
+        "load_checkpoint": "model_.*.pt",
+        "resume": false,
+        "save_interval": 50
+      },
+      "verdict": "Training starts fresh; load_checkpoint is inert because resume=false. Final CSV iteration is used for reported training reward."
+    },
+    {
+      "classification": "harmless representation",
+      "field": "software versions",
+      "newton": "Shared env_capture.txt",
+      "physx": "Shared env_capture.txt",
+      "verdict": "Both arms are from one strengthening suite under the same captured Isaac Lab SHA, package freeze, driver, and CUDA stack."
+    }
+  ],
+  "publication_safe": false,
+  "task_from_run_script": "Isaac-Velocity-Flat-Unitree-Go2-v0",
+  "unsafe_fields": [
+    {
+      "classification": "uncontrolled confound",
+      "field": "reset distributions",
+      "newton": "reset_base/reset_robot_joints match; physics_material and add_base_mass startup events missing",
+      "physx": "reset_base/reset_robot_joints match; physics_material and add_base_mass startup events present",
+      "verdict": "Startup material and mass randomization are not controlled across backends."
+    }
+  ]
+}

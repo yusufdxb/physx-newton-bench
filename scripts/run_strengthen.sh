@@ -29,6 +29,17 @@ mkdir -p "$OUT" "$BENCH/logs/strengthen"
 } > "$OUT/env_capture.txt" 2>&1
 echo "[STRENGTHEN] env captured"
 
+# ---------- 0.5 Semantic preflight ----------
+echo "[STRENGTHEN] semantic preflight $(date -Is)"
+"$PY" "$BENCH/scripts/compare_semantic_configs.py" --fail-on-unsafe \
+  > "$OUT/config_semantic_comparison.log" 2>&1
+EC=$?
+cat "$OUT/config_semantic_comparison.log"
+if [ $EC -ne 0 ]; then
+  echo "[STRENGTHEN] semantic preflight failed; aborting before probes/training"
+  exit $EC
+fi
+
 # ---------- 1. Throughput + per-process VRAM sweep ----------
 for preset in physx newton; do
   for ne in 256 1024 2048 4096; do

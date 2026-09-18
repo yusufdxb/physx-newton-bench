@@ -1,0 +1,332 @@
+{
+  "interpretation": "At least one fixed-checkpoint preference reverses across backends.",
+  "max_rank_shift": 7,
+  "num_policies": 10,
+  "per_policy": [
+    {
+      "newton_mean_return": 30.166547775268555,
+      "newton_minus_physx_return": {
+        "ci_high": 36.53179847043939,
+        "ci_low": 32.993976642377675,
+        "difference": 34.80060707218945
+      },
+      "newton_rank": 3,
+      "newton_success_rate": 1.0,
+      "physx_mean_return": -4.634059296920896,
+      "physx_rank": 4,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s0"
+    },
+    {
+      "newton_mean_return": 28.76030741399154,
+      "newton_minus_physx_return": {
+        "ci_high": 35.23303973162547,
+        "ci_low": 30.314746845234186,
+        "difference": 32.88546782685444
+      },
+      "newton_rank": 5,
+      "newton_success_rate": 0.9375,
+      "physx_mean_return": -4.125160412862897,
+      "physx_rank": 2,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s1"
+    },
+    {
+      "newton_mean_return": 29.7805419228971,
+      "newton_minus_physx_return": {
+        "ci_high": 38.87360656252131,
+        "ci_low": 35.189692966546865,
+        "difference": 37.10683201253414
+      },
+      "newton_rank": 4,
+      "newton_success_rate": 0.984375,
+      "physx_mean_return": -7.326290089637041,
+      "physx_rank": 10,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s2"
+    },
+    {
+      "newton_mean_return": 22.032232761383057,
+      "newton_minus_physx_return": {
+        "ci_high": 28.40065115233883,
+        "ci_low": 23.610893760388716,
+        "difference": 25.99552644509822
+      },
+      "newton_rank": 7,
+      "newton_success_rate": 0.953125,
+      "physx_mean_return": -3.9632936837151647,
+      "physx_rank": 1,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s3"
+    },
+    {
+      "newton_mean_return": 31.855454752221704,
+      "newton_minus_physx_return": {
+        "ci_high": 38.80602055033668,
+        "ci_low": 34.2543680688017,
+        "difference": 36.62811696366407
+      },
+      "newton_rank": 1,
+      "newton_success_rate": 0.96875,
+      "physx_mean_return": -4.772662211442366,
+      "physx_rank": 5,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s4"
+    },
+    {
+      "newton_mean_return": 30.64046543650329,
+      "newton_minus_physx_return": {
+        "ci_high": 40.63638385215308,
+        "ci_low": 34.527519779908474,
+        "difference": 37.6934528965503
+      },
+      "newton_rank": 2,
+      "newton_success_rate": 0.96875,
+      "physx_mean_return": -7.052987460047007,
+      "physx_rank": 9,
+      "physx_success_rate": 0.234375,
+      "policy_id": "newton_s5"
+    },
+    {
+      "newton_mean_return": 23.692070614546537,
+      "newton_minus_physx_return": {
+        "ci_high": 30.470201187301427,
+        "ci_low": 26.523520251363514,
+        "difference": 28.510042179375887
+      },
+      "newton_rank": 6,
+      "newton_success_rate": 0.984375,
+      "physx_mean_return": -4.8179715648293495,
+      "physx_rank": 6,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s6"
+    },
+    {
+      "newton_mean_return": 20.149130653589964,
+      "newton_minus_physx_return": {
+        "ci_high": 27.35655217953026,
+        "ci_low": 21.62005176814273,
+        "difference": 24.519757583737373
+      },
+      "newton_rank": 10,
+      "newton_success_rate": 0.96875,
+      "physx_mean_return": -4.370626930147409,
+      "physx_rank": 3,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s7"
+    },
+    {
+      "newton_mean_return": 20.593495190143585,
+      "newton_minus_physx_return": {
+        "ci_high": 28.287934293504804,
+        "ci_low": 23.769373688846827,
+        "difference": 26.032542809844017
+      },
+      "newton_rank": 8,
+      "newton_success_rate": 0.984375,
+      "physx_mean_return": -5.439047619700432,
+      "physx_rank": 7,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s8"
+    },
+    {
+      "newton_mean_return": 20.477340104058385,
+      "newton_minus_physx_return": {
+        "ci_high": 29.49699995056726,
+        "ci_low": 23.391254945471882,
+        "difference": 26.44730375148356
+      },
+      "newton_rank": 9,
+      "newton_success_rate": 0.9375,
+      "physx_mean_return": -5.969963647425175,
+      "physx_rank": 8,
+      "physx_success_rate": 0.0,
+      "policy_id": "newton_s9"
+    }
+  ],
+  "preference_reversal_count": 25,
+  "preference_reversal_fraction": 0.5555555555555556,
+  "probe_survives": true,
+  "ranks": {
+    "newton": {
+      "newton_s0": 3,
+      "newton_s1": 5,
+      "newton_s2": 4,
+      "newton_s3": 7,
+      "newton_s4": 1,
+      "newton_s5": 2,
+      "newton_s6": 6,
+      "newton_s7": 10,
+      "newton_s8": 8,
+      "newton_s9": 9
+    },
+    "physx": {
+      "newton_s0": 4,
+      "newton_s1": 2,
+      "newton_s2": 10,
+      "newton_s3": 1,
+      "newton_s4": 5,
+      "newton_s5": 9,
+      "newton_s6": 6,
+      "newton_s7": 3,
+      "newton_s8": 7,
+      "newton_s9": 8
+    }
+  },
+  "reversals": [
+    {
+      "first": "newton_s0",
+      "newton_delta": 1.406240361277014,
+      "physx_delta": -0.5088988840579987,
+      "second": "newton_s1"
+    },
+    {
+      "first": "newton_s0",
+      "newton_delta": 8.134315013885498,
+      "physx_delta": -0.6707656132057309,
+      "second": "newton_s3"
+    },
+    {
+      "first": "newton_s0",
+      "newton_delta": -1.6889069769531488,
+      "physx_delta": 0.13860291452147067,
+      "second": "newton_s4"
+    },
+    {
+      "first": "newton_s0",
+      "newton_delta": -0.47391766123473644,
+      "physx_delta": 2.418928163126111,
+      "second": "newton_s5"
+    },
+    {
+      "first": "newton_s0",
+      "newton_delta": 10.01741712167859,
+      "physx_delta": -0.26343236677348614,
+      "second": "newton_s7"
+    },
+    {
+      "first": "newton_s1",
+      "newton_delta": -1.0202345089055598,
+      "physx_delta": 3.201129676774144,
+      "second": "newton_s2"
+    },
+    {
+      "first": "newton_s1",
+      "newton_delta": 6.728074652608484,
+      "physx_delta": -0.16186672914773226,
+      "second": "newton_s3"
+    },
+    {
+      "first": "newton_s1",
+      "newton_delta": -3.095147338230163,
+      "physx_delta": 0.6475017985794693,
+      "second": "newton_s4"
+    },
+    {
+      "first": "newton_s1",
+      "newton_delta": -1.8801580225117505,
+      "physx_delta": 2.9278270471841097,
+      "second": "newton_s5"
+    },
+    {
+      "first": "newton_s2",
+      "newton_delta": 7.748309161514044,
+      "physx_delta": -3.3629964059218764,
+      "second": "newton_s3"
+    },
+    {
+      "first": "newton_s2",
+      "newton_delta": 6.088471308350563,
+      "physx_delta": -2.5083185248076916,
+      "second": "newton_s6"
+    },
+    {
+      "first": "newton_s2",
+      "newton_delta": 9.631411269307137,
+      "physx_delta": -2.9556631594896317,
+      "second": "newton_s7"
+    },
+    {
+      "first": "newton_s2",
+      "newton_delta": 9.187046732753515,
+      "physx_delta": -1.8872424699366093,
+      "second": "newton_s8"
+    },
+    {
+      "first": "newton_s2",
+      "newton_delta": 9.303201818838716,
+      "physx_delta": -1.3563264422118664,
+      "second": "newton_s9"
+    },
+    {
+      "first": "newton_s3",
+      "newton_delta": -9.823221990838647,
+      "physx_delta": 0.8093685277272016,
+      "second": "newton_s4"
+    },
+    {
+      "first": "newton_s3",
+      "newton_delta": -8.608232675120234,
+      "physx_delta": 3.089693776331842,
+      "second": "newton_s5"
+    },
+    {
+      "first": "newton_s3",
+      "newton_delta": -1.6598378531634808,
+      "physx_delta": 0.8546778811141849,
+      "second": "newton_s6"
+    },
+    {
+      "first": "newton_s4",
+      "newton_delta": 11.70632409863174,
+      "physx_delta": -0.4020352812949568,
+      "second": "newton_s7"
+    },
+    {
+      "first": "newton_s5",
+      "newton_delta": 6.948394821956754,
+      "physx_delta": -2.235015895217657,
+      "second": "newton_s6"
+    },
+    {
+      "first": "newton_s5",
+      "newton_delta": 10.491334782913327,
+      "physx_delta": -2.682360529899597,
+      "second": "newton_s7"
+    },
+    {
+      "first": "newton_s5",
+      "newton_delta": 10.046970246359706,
+      "physx_delta": -1.6139398403465748,
+      "second": "newton_s8"
+    },
+    {
+      "first": "newton_s5",
+      "newton_delta": 10.163125332444906,
+      "physx_delta": -1.083023812621832,
+      "second": "newton_s9"
+    },
+    {
+      "first": "newton_s6",
+      "newton_delta": 3.5429399609565735,
+      "physx_delta": -0.4473446346819401,
+      "second": "newton_s7"
+    },
+    {
+      "first": "newton_s7",
+      "newton_delta": -0.4443645365536213,
+      "physx_delta": 1.0684206895530224,
+      "second": "newton_s8"
+    },
+    {
+      "first": "newton_s7",
+      "newton_delta": -0.328209450468421,
+      "physx_delta": 1.5993367172777653,
+      "second": "newton_s9"
+    }
+  ],
+  "schema_version": 1,
+  "spearman_rank_correlation": -0.19999999999999998,
+  "total_policy_pairs": 45,
+  "uncertainty_note": "Per-policy return intervals bootstrap vectorized episodes within one simulator process. They do not replace process-level replication."
+}

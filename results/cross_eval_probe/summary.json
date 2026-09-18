@@ -1,0 +1,75 @@
+{
+  "interpretation": "At least one fixed-checkpoint preference reverses across backends.",
+  "max_rank_shift": 1,
+  "num_policies": 3,
+  "per_policy": [
+    {
+      "newton_mean_return": -3.92472805082798,
+      "newton_minus_physx_return": {
+        "ci_high": -32.83062055422925,
+        "ci_low": -36.756489392509685,
+        "difference": -34.87685275264084
+      },
+      "newton_rank": 1,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 30.952124701812863,
+      "physx_rank": 2,
+      "physx_success_rate": 0.984375,
+      "policy_id": "physx_s0"
+    },
+    {
+      "newton_mean_return": -4.8376220148056746,
+      "newton_minus_physx_return": {
+        "ci_high": -23.61106284162961,
+        "ci_low": -28.754032057523727,
+        "difference": -26.146178483963013
+      },
+      "newton_rank": 3,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 21.308556469157338,
+      "physx_rank": 3,
+      "physx_success_rate": 0.75,
+      "policy_id": "physx_s1"
+    },
+    {
+      "newton_mean_return": -4.720976777374744,
+      "newton_minus_physx_return": {
+        "ci_high": -35.51043956913054,
+        "ci_low": -39.00298554236069,
+        "difference": -37.40368967503309
+      },
+      "newton_rank": 2,
+      "newton_success_rate": 0.0,
+      "physx_mean_return": 32.68271289765835,
+      "physx_rank": 1,
+      "physx_success_rate": 0.96875,
+      "policy_id": "physx_s2"
+    }
+  ],
+  "preference_reversal_count": 1,
+  "preference_reversal_fraction": 0.3333333333333333,
+  "probe_survives": true,
+  "ranks": {
+    "newton": {
+      "physx_s0": 1,
+      "physx_s1": 3,
+      "physx_s2": 2
+    },
+    "physx": {
+      "physx_s0": 2,
+      "physx_s1": 3,
+      "physx_s2": 1
+    }
+  },
+  "reversals": [
+    {
+      "first": "physx_s0",
+      "newton_delta": 0.7962487265467644,
+      "physx_delta": -1.7305881958454847,
+      "second": "physx_s2"
+    }
+  ],
+  "schema_version": 1,
+  "spearman_rank_correlation": 0.5,
+  "total_policy_pairs": 3
+}
